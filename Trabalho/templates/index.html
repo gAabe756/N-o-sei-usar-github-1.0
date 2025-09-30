@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Streaming - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>📺 Plataforma Streaming</h1>
+    </header>
+    <main>
+        <section class="adicionar-midia">
+            <h2>Adicionar Mídia</h2>
+            <form method="POST" action="/adicionar">
+                <input type="text" name="titulo" placeholder="Título" required>
+                <select name="genero">
+                    <option>Filme</option>
+                    <option>Série</option>
+                    <option>Anime</option>
+                </select>
+                <input type="text" name="avaliacao" placeholder="Nota" required>
+                <input type="text" name="ano" placeholder="Ano" required>
+                <input type="text" name="idioma" placeholder="Idioma" required>
+                <button type="submit">Adicionar</button>
+            </form>
+        </section>
+
+        <section class="destaque">
+            <h2>🎯 Destaques</h2>
+            {% for midia in destaque %}
+                <div class="card destaque-card">
+                    <p>{{ midia.descricao() }}</p>
+                    <a href="/excluir/{{ loop.index0 }}">Remover do Destaque</a>
+                </div>
+            {% else %}
+                <p>Nenhum destaque disponível</p>
+            {% endfor %}
+        </section>
+
+        <section class="disponiveis">
+            <h2>📂 Disponíveis</h2>
+            {% for midia in disponiveis %}
+                <div class="card">
+                    <p>{{ midia.descricao() }}</p>
+                    <a href="/destacar/{{ loop.index0 }}">Destacar</a>
+                    <a href="/remover/{{ loop.index0 }}">Remover</a>
+                </div>
+            {% else %}
+                <p>Nenhuma mídia disponível</p>
+            {% endfor %}
+        </section>
+    </main>
+</body>
+</html>
