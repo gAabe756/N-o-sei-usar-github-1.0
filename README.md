@@ -1,2 +1,2 @@
-# N-o-sei-usar-github-1.0
-minha primeira pub, mas ainda me sinto um neanderthal usando isso
+# Nn-sei-usar-github-1.0
+Me sinto um neanderthal usando isso
